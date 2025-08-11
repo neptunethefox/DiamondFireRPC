@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "dfrpc",
+  "version": "${version}",
+  "name": "DiamondFire Rich Presence",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/dfrpc/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "io.github.neptunethefox.dfrpc.client.DfrpcClient"
+    ],
+    "main": [
+      "io.github.neptunethefox.dfrpc.Dfrpc"
+    ]
+  },
+  "mixins": [
+    "dfrpc.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "flint": ">=${flint_version}",
+    "minecraft": "${minecraft_version}"
+  }
+}
