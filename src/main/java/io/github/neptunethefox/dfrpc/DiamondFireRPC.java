@@ -9,9 +9,10 @@ import net.fabricmc.api.ClientModInitializer;
 public class DiamondFireRPC implements ClientModInitializer {
 
     public static final DFRPCConfig CONFIG = DFRPCConfig.createAndLoad();
+    public static long CLIENT_ID = 1404367293378592818L;
 
     @Override
     public void onInitializeClient() {
-        FlintAPI.registerFeatures(new DiscordRPC(CONFIG.CLIENT_ID()));
+        FlintAPI.registerFeatures(new DiscordRPC(CLIENT_ID));
     }
 }

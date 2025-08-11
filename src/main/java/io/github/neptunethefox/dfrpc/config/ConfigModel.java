@@ -12,7 +12,6 @@ public class ConfigModel {
     @RestartRequired
     @SectionHeader("Mod")
     public boolean ENABLED = true;
-    public long CLIENT_ID = 1404367293378592818L;
 
     @SectionHeader("Rich Presence")
     public String IN_SPAWN_MESSAGE = "Vibing in %s spawn";
