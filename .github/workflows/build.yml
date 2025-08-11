@@ -37,3 +37,25 @@ jobs:
           prerelease: false
           files: |
             ./build/libs/
+      - name: Publish to Modrinth
+        uses: cloudnode-pro/modrinth-publish@v2
+        with:
+          token: ${{ secrets.MODRINTH_TOKEN }}
+          project: QmAnYs7W
+          name: "DiamondFire RPC v${{ github.run_number }}"
+          version: "v${{ github.run_number }}"
+          changelog: "${{ github.event.head_commit.message }}"
+          dependencies: |-
+            [{
+              "project_id": "P7dR8mSH",
+              "dependency_type": "required"
+            }, {
+              "project_id": "dBv9so2c",
+              "dependency_type": "required"      
+            }]
+          loaders: |-
+            fabric
+          game-versions: |-
+            1.21.3
+          files: '["./build/libs/DFRPC-1.0.0-SNAPSHOT.jar", "./build/libs/DFRPC-1.0.0-sources.jar"]'
+          primary-file: "DFRPC-1.0.0-SNAPSHOT.jar"
