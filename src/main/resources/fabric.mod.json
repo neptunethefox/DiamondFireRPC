@@ -3,7 +3,7 @@
   "id": "dfrpc",
   "version": "${version}",
   "name": "DiamondFire Rich Presence",
-  "description": "",
+  "description": "Adds Discord RPC to DiamondFire!",
   "authors": ["WindowsWhistler"],
   "contact": {},
   "license": "MIT",

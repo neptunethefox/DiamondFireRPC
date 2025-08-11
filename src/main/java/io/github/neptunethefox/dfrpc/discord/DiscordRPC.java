@@ -18,7 +18,7 @@ public class DiscordRPC implements TickedFeature {
         richPresence.setLargeImage("diamondfire", "DiamondFire");
         this.clientID = clientID;
 
-        if (ConfigModel.enabled)
+        if (ConfigModel.ENABLED)
             DiscordIPC.start(clientID, null);
     }
 
@@ -47,12 +47,17 @@ public class DiscordRPC implements TickedFeature {
                 Plot currentPlot = Flint.getUser().getPlot();
                 richPresence.setLargeImage("plot", Flint.getUser().getPlot().getName().getString());
 
-                if (!Objects.equals(Flint.getUser().getMode().getName(), "Dev"))
-                    richPresence.setDetails(Flint.getUser().getMode().getName()+"ing on "+currentPlot.getName().getString());
-                else
-                    richPresence.setDetails("Coding on "+currentPlot.getName().getString());
+                if (ConfigModel.SHOW_MODE) {
+                    if (!Objects.equals(Flint.getUser().getMode().getName(), "Dev"))
+                        richPresence.setDetails(Flint.getUser().getMode().getName() + "ing on " + currentPlot.getName().getString());
+                    else
+                        richPresence.setDetails("Coding on " + currentPlot.getName().getString());
+                } else {
+                    richPresence.setDetails("???");
+                }
 
-                richPresence.setSmallImage(Flint.getUser().getMode().getName().toLowerCase(), Flint.getUser().getMode().getName());
+                if (ConfigModel.SHOW_MODE)
+                    richPresence.setSmallImage(Flint.getUser().getMode().getName().toLowerCase(), Flint.getUser().getMode().getName());
             }
             DiscordIPC.setActivity(richPresence);
         }
