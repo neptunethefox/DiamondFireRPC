@@ -40,14 +40,11 @@ public class DiscordRPC implements TickedFeature {
             richPresence.setLargeImage("diamondfire", "DiamondFire");
 
             if (Flint.getUser().getPlot() == null) {
-                richPresence.setDetails("Vibing in "+Flint.getUser().getNode().getName());
+                richPresence.setDetails("Vibing in %s spawn".formatted(Flint.getUser().getNode().getName()));
                 richPresence.setSmallImage(null, null);
             } else {
                 Plot currentPlot = Flint.getUser().getPlot();
-                String largeURL = "https://raw.githubusercontent.com/Owen1212055/mc-assets/refs/heads/main/item-assets/PAPER.png";
-
-
-                richPresence.setLargeImage(largeURL, Flint.getUser().getPlot().getName().getString());
+                richPresence.setLargeImage("plot", Flint.getUser().getPlot().getName().getString());
 
                 if (!Objects.equals(Flint.getUser().getMode().getName(), "Dev"))
                     richPresence.setDetails(Flint.getUser().getMode().getName()+"ing on "+currentPlot.getName().getString());
