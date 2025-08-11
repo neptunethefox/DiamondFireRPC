@@ -4,7 +4,7 @@
   "version": "${version}",
   "name": "DiamondFire Rich Presence",
   "description": "",
-  "authors": [],
+  "authors": ["WindowsWhistler"],
   "contact": {},
   "license": "MIT",
   "icon": "assets/dfrpc/icon.png",
