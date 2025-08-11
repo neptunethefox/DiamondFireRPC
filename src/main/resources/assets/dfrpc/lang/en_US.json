@@ -1,0 +1,15 @@
+{
+  "text.config.dfrpc-config.title": "DiamondFire Rich Presence",
+  "text.config.dfrpc-config.section.Mod": "Mod",
+  "text.config.dfrpc-config.section.Rich Presence": "Rich Presence",
+
+  "text.config.dfrpc-config.option.ENABLED": "Enabled",
+  "text.config.dfrpc-config.option.CLIENT_ID": "Client ID",
+  "text.config.dfrpc-config.option.CLIENT_ID.tooltip": "The Client ID used by the mod for the rich presence.",
+  "text.config.dfrpc-config.option.IN_SPAWN_MESSAGE": "In Spawn Message",
+  "text.config.dfrpc-config.option.IN_SPAWN_MESSAGE.tooltip": "The message that displays while your in the lobby.",
+  "text.config.dfrpc-config.option.NOT_ON_DIAMONDFIRE_MESSAGE": "Not on DiamondFire Message",
+  "text.config.dfrpc-config.option.NOT_ON_DIAMONDFIRE_MESSAGE.tooltip": "The message that displays while not on DiamondFire (this should be removed! one day..)",
+  "text.config.dfrpc-config.option.SHOW_MODE": "Show Mode",
+  "text.config.dfrpc-config.option.SHOW_MODE.tooltip": "Should your mode (Coding, Building, Playing) show on your status?"
+}
