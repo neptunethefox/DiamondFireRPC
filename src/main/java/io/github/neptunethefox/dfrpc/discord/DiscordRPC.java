@@ -15,7 +15,7 @@ public class DiscordRPC implements TickedFeature {
     private int updateTick = 0;
 
     public DiscordRPC(long clientID) {
-        richPresence.setLargeImage("diamondfire", "Starting/Not on DF");
+        richPresence.setLargeImage("diamondfire", "DiamondFire");
         this.clientID = clientID;
 
         if (ConfigModel.enabled)
@@ -28,9 +28,9 @@ public class DiscordRPC implements TickedFeature {
         updateTick++;
         if (updateTick == 24) {
             updateTick = 0;
+            richPresence.setLargeImage("diamondfire", "DiamondFire");
             if (Flint.getUser().getNode() == null) {
-                richPresence.setLargeImage("diamondfire", "DiamondFire");
-                richPresence.setDetails("Not on DiamondFire");
+                richPresence.setDetails(ConfigModel.NOT_ON_DIAMONDFIRE_MESSAGE);
 
                 DiscordIPC.stop();
                 return;
@@ -40,10 +40,8 @@ public class DiscordRPC implements TickedFeature {
                 DiscordIPC.start(this.clientID, null);
             }
 
-            richPresence.setLargeImage("diamondfire", "DiamondFire");
-
             if (Flint.getUser().getPlot() == null) {
-                richPresence.setDetails("Vibing in %s spawn".formatted(Flint.getUser().getNode().getName()));
+                richPresence.setDetails(ConfigModel.IN_SPAWN_MESSAGE.formatted(Flint.getUser().getNode().getName()));
                 richPresence.setSmallImage(null, null);
             } else {
                 Plot currentPlot = Flint.getUser().getPlot();

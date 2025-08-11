@@ -75,6 +75,7 @@ processResources {
     inputs.property "flint_version", project.flint_version
     inputs.property "owo_version", project.owo_version
     inputs.property "modmenu_version", project.modmenu_version
+
     filteringCharset "UTF-8"
 
     filesMatching("fabric.mod.json") {
@@ -83,7 +84,7 @@ processResources {
                 "loader_version": project.loader_version,
                 "flint_version": project.flint_version,
                 "owo_version": project.owo_version,
-                "modmenu": project.modmenu_version
+                "modmenu_version": project.modmenu_version
     }
 }
 

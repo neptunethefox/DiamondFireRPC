@@ -12,4 +12,12 @@ public class ConfigModel {
     @SectionHeader("Mod")
     public static boolean enabled = true;
 
+    @SectionHeader("Rich Presence")
+    public static String IN_SPAWN_MESSAGE = "Vibing in %s spawn";
+
+    // This shouldn't be seen normally but eh why not!
+    public static String NOT_ON_DIAMONDFIRE_MESSAGE = "Not on DiamondFire";
+
+
+
 }
