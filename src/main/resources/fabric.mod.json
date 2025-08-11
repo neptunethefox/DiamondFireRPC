@@ -12,9 +12,6 @@
   "entrypoints": {
     "client": [
       "io.github.neptunethefox.dfrpc.client.DfrpcClient"
-    ],
-    "main": [
-      "io.github.neptunethefox.dfrpc.Dfrpc"
     ]
   },
   "mixins": [
