@@ -11,7 +11,10 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "io.github.neptunethefox.dfrpc.client.DfrpcClient"
+      "io.github.neptunethefox.dfrpc.DiamondFireRPC"
+    ],
+    "modmenu": [
+      "io.github.neptunethefox.dfrpc.modmenu.ModMenuIntegration"
     ]
   },
   "mixins": [
