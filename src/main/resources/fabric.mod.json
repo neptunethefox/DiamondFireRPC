@@ -21,6 +21,8 @@
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
     "flint": ">=${flint_version}",
-    "minecraft": "${minecraft_version}"
+    "minecraft": "${minecraft_version}",
+    "modmenu": ">=${modmenu_version}",
+    "owo": "${owo_version}"
   }
 }

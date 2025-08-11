@@ -28,6 +28,8 @@ repositories {
             includeGroup "maven.modrinth"
         }
     }
+
+    // Discord IPC
     maven {
         name = "meteor-maven"
         url = "https://maven.meteordev.org/releases"
@@ -35,6 +37,14 @@ repositories {
     maven {
         name = "meteor-maven-snapshots"
         url = "https://maven.meteordev.org/snapshots"
+    }
+
+    repositories {
+        maven { url 'https://maven.wispforest.io/releases/' }
+    }
+    maven {
+        name = "Terraformers"
+        url = "https://maven.terraformersmc.com/"
     }
 }
 
@@ -49,8 +59,12 @@ dependencies {
         exclude group: "net.fabricmc.fabric-api"
     }
 
-    include(implementation 'meteordevelopment:discord-ipc:1.1')
 
+
+    include(implementation 'meteordevelopment:discord-ipc:1.1')
+    include "io.wispforest:owo-sentinel:${project.owo_version}"
+    modImplementation "io.wispforest:owo-lib:${project.owo_version}"
+    modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 }
 
@@ -59,13 +73,17 @@ processResources {
     inputs.property "minecraft_version", project.minecraft_version
     inputs.property "loader_version", project.loader_version
     inputs.property "flint_version", project.flint_version
+    inputs.property "owo_version", project.owo_version
+    inputs.property "modmenu_version", project.modmenu_version
     filteringCharset "UTF-8"
 
     filesMatching("fabric.mod.json") {
         expand "version": project.version,
                 "minecraft_version": project.minecraft_version,
                 "loader_version": project.loader_version,
-                "flint_version": project.flint_version
+                "flint_version": project.flint_version,
+                "owo_version": project.owo_version,
+                "modmenu": project.modmenu_version
     }
 }
 

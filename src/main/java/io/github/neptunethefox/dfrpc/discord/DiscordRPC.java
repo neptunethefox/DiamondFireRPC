@@ -3,6 +3,7 @@ package io.github.neptunethefox.dfrpc.discord;
 import dev.dfonline.flint.Flint;
 import dev.dfonline.flint.feature.trait.TickedFeature;
 import dev.dfonline.flint.hypercube.Plot;
+import io.github.neptunethefox.dfrpc.config.ConfigModel;
 import meteordevelopment.discordipc.DiscordIPC;
 import meteordevelopment.discordipc.RichPresence;
 
@@ -10,13 +11,15 @@ import java.util.Objects;
 
 public class DiscordRPC implements TickedFeature {
     public static final RichPresence richPresence = new RichPresence();
-    private long clientID;
+    private final long clientID;
     private int updateTick = 0;
 
     public DiscordRPC(long clientID) {
         richPresence.setLargeImage("diamondfire", "Starting/Not on DF");
         this.clientID = clientID;
-        DiscordIPC.start(clientID, null);
+
+        if (ConfigModel.enabled)
+            DiscordIPC.start(clientID, null);
     }
 
 
