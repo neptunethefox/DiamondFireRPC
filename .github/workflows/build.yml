@@ -57,5 +57,5 @@ jobs:
             fabric
           game-versions: |-
             1.21.3
-          files: '["./build/libs/DFRPC-1.0.0-SNAPSHOT.jar", "./build/libs/DFRPC-1.0.0-sources.jar"]'
-          primary-file: "DFRPC-1.0.0-SNAPSHOT.jar"
+          files: '["./build/libs/DFRPC-${{ github.run_number }}.jar", "./build/libs/DFRPC-${{ github.run_number }}-sources.jar"]'
+          primary-file: "DFRPC-${{ github.run_number }}-SNAPSHOT.jar"
