@@ -12,6 +12,6 @@ public class DiamondFireRPC implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        FlintAPI.registerFeatures(new DiscordRPC(ConfigModel.CLIENT_ID));
+        FlintAPI.registerFeatures(new DiscordRPC(CONFIG.CLIENT_ID()));
     }
 }

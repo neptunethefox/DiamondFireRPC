@@ -11,16 +11,16 @@ public class ConfigModel {
 
     @RestartRequired
     @SectionHeader("Mod")
-    public static boolean ENABLED = true;
-    public static long CLIENT_ID = 1404367293378592818L;
+    public boolean ENABLED = true;
+    public long CLIENT_ID = 1404367293378592818L;
 
     @SectionHeader("Rich Presence")
-    public static String IN_SPAWN_MESSAGE = "Vibing in %s spawn";
+    public String IN_SPAWN_MESSAGE = "Vibing in %s spawn";
 
     // This shouldn't be seen normally but eh why not!
-    public static String NOT_ON_DIAMONDFIRE_MESSAGE = "Not on DiamondFire";
+    public String NOT_ON_DIAMONDFIRE_MESSAGE = "Not on DiamondFire";
 
-    public static boolean SHOW_MODE = true;
+    public boolean SHOW_MODE = true;
 
 
 
