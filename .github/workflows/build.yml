@@ -20,5 +20,7 @@ jobs:
         with:
           java-version: 21
           distribution: "temurin"
-      - name: Build Remapped Jar
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+      - name: Build Jar
         run: ./gradlew build '-Pversion=${{ github.run_number }}'
