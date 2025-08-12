@@ -52,6 +52,12 @@ jobs:
             }, {
               "project_id": "dBv9so2c",
               "dependency_type": "required"      
+            }, {
+              "project_id": "ccKDOlHs",
+              "dependency_type": "required"
+            }, {
+              "project_id": "mOgUt4GM",
+              "dependency_type": "required"
             }]
           loaders: |-
             fabric
