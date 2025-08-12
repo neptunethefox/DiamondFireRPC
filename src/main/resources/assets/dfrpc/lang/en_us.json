@@ -11,5 +11,11 @@
   "text.config.dfrpc-config.option.NOT_ON_DIAMONDFIRE_MESSAGE": "Not on DiamondFire Message",
   "text.config.dfrpc-config.option.NOT_ON_DIAMONDFIRE_MESSAGE.tooltip": "The message that displays while not on DiamondFire (this should be removed! one day..)",
   "text.config.dfrpc-config.option.SHOW_MODE": "Show Mode",
-  "text.config.dfrpc-config.option.SHOW_MODE.tooltip": "Should your mode (Coding, Building, Playing) show on your status?"
+  "text.config.dfrpc-config.option.SHOW_MODE.tooltip": "Should your mode (Coding, Building, Playing) show on your status?",
+  "text.config.dfrpc-config.enum.modeHiding.full_hide": "Hide Fully",
+  "text.config.dfrpc-config.enum.modeHiding.full_hide.tooltip": "Hide your mode completely.",
+  "text.config.dfrpc-config.enum.modeHiding.semi_hide": "Hide Small Image",
+  "text.config.dfrpc-config.enum.modeHiding.semi_hide.tooltip": "Hides the small icon.",
+  "text.config.dfrpc-config.enum.modeHiding.show": "Show",
+  "text.config.dfrpc-config.enum.modeHiding.show.tooltip": "Shows your mode completely."
 }

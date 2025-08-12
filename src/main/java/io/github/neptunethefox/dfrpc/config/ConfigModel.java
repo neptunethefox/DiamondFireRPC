@@ -5,6 +5,8 @@ import io.wispforest.owo.config.annotation.Modmenu;
 import io.wispforest.owo.config.annotation.RestartRequired;
 import io.wispforest.owo.config.annotation.SectionHeader;
 
+
+
 @Modmenu(modId = "dfrpc")
 @Config(name = "dfrpc-config", wrapperName = "DFRPCConfig")
 public class ConfigModel {
@@ -19,8 +21,14 @@ public class ConfigModel {
     // This shouldn't be seen normally but eh why not!
     public String NOT_ON_DIAMONDFIRE_MESSAGE = "Not on DiamondFire";
 
-    public boolean SHOW_MODE = true;
 
 
+    public ModeHiding SHOW_MODE = ModeHiding.SHOW;
 
+    public enum ModeHiding {
+        SHOW,
+        SEMI_HIDE,
+        FULL_HIDE
+    }
 }
+

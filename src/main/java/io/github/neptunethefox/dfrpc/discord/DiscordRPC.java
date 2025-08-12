@@ -48,7 +48,7 @@ public class DiscordRPC implements TickedFeature {
                 Plot currentPlot = Flint.getUser().getPlot();
                 richPresence.setLargeImage("plot", Flint.getUser().getPlot().getName().getString());
 
-                if (DiamondFireRPC.CONFIG.SHOW_MODE()) {
+                if (DiamondFireRPC.CONFIG.SHOW_MODE() != ConfigModel.ModeHiding.FULL_HIDE) {
                     if (!Objects.equals(Flint.getUser().getMode().getName(), "Dev"))
                         richPresence.setDetails(Flint.getUser().getMode().getName() + "ing on " + currentPlot.getName().getString());
                     else
@@ -57,7 +57,7 @@ public class DiscordRPC implements TickedFeature {
                     richPresence.setDetails("???");
                 }
 
-                if (DiamondFireRPC.CONFIG.SHOW_MODE())
+                if (DiamondFireRPC.CONFIG.SHOW_MODE() == ConfigModel.ModeHiding.SEMI_HIDE || DiamondFireRPC.CONFIG.SHOW_MODE() == ConfigModel.ModeHiding.FULL_HIDE)
                     richPresence.setSmallImage(Flint.getUser().getMode().getName().toLowerCase(), Flint.getUser().getMode().getName());
             }
             DiscordIPC.setActivity(richPresence);
