@@ -6,7 +6,7 @@
   "description": "Adds Discord RPC to DiamondFire!",
   "authors": ["WindowsWhistler"],
   "contact": {},
-  "license": "MIT",
+  "license": "GPL-3.0",
   "icon": "assets/dfrpc/icon.png",
   "environment": "client",
   "entrypoints": {
