@@ -1,7 +1,10 @@
 package io.github.neptunethefox.dfrpc.discord;
 
 import dev.dfonline.flint.Flint;
+import dev.dfonline.flint.FlintAPI;
+import dev.dfonline.flint.feature.core.FeatureTraitType;
 import dev.dfonline.flint.feature.trait.TickedFeature;
+import dev.dfonline.flint.hypercube.Mode;
 import dev.dfonline.flint.hypercube.Plot;
 import io.github.neptunethefox.dfrpc.DiamondFireRPC;
 import io.github.neptunethefox.dfrpc.config.ConfigModel;
@@ -24,6 +27,7 @@ public class DiscordRPC implements TickedFeature {
     }
 
 
+
     @Override
     public void tick() {
         updateTick++;
@@ -31,8 +35,6 @@ public class DiscordRPC implements TickedFeature {
             updateTick = 0;
             richPresence.setLargeImage("diamondfire", "DiamondFire");
             if (Flint.getUser().getNode() == null || !DiamondFireRPC.CONFIG.ENABLED()) {
-                richPresence.setDetails(DiamondFireRPC.CONFIG.NOT_ON_DIAMONDFIRE_MESSAGE());
-
                 DiscordIPC.stop();
                 return;
             }
@@ -41,7 +43,7 @@ public class DiscordRPC implements TickedFeature {
                 DiscordIPC.start(this.clientID, null);
             }
 
-            if (Flint.getUser().getPlot() == null) {
+            if (Flint.getUser().getPlot() == null && Flint.getUser().getMode() == Mode.SPAWN) {
                 richPresence.setDetails(DiamondFireRPC.CONFIG.IN_SPAWN_MESSAGE().formatted(Flint.getUser().getNode().getName()));
                 richPresence.setSmallImage(null, null);
             } else {
@@ -65,5 +67,13 @@ public class DiscordRPC implements TickedFeature {
             DiscordIPC.setActivity(richPresence);
         }
     }
+
+    /**
+     * Called when the player leaves DF.
+     */
+    public static void informOfDisconnect() {
+        DiscordIPC.stop();
+    }
+
 }
 
