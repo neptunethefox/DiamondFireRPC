@@ -1,8 +1,6 @@
 package io.github.neptunethefox.dfrpc.discord;
 
 import dev.dfonline.flint.Flint;
-import dev.dfonline.flint.FlintAPI;
-import dev.dfonline.flint.feature.core.FeatureTraitType;
 import dev.dfonline.flint.feature.trait.TickedFeature;
 import dev.dfonline.flint.hypercube.Mode;
 import dev.dfonline.flint.hypercube.Plot;
