@@ -6,6 +6,7 @@ import dev.dfonline.flint.hypercube.Mode;
 import dev.dfonline.flint.hypercube.Plot;
 import io.github.neptunethefox.dfrpc.DiamondFireRPC;
 import io.github.neptunethefox.dfrpc.config.ConfigModel;
+import io.github.neptunethefox.dfrpc.plot.PlotRPC;
 import meteordevelopment.discordipc.DiscordIPC;
 import meteordevelopment.discordipc.RichPresence;
 
@@ -57,6 +58,22 @@ public class DiscordRPC implements TickedFeature {
                     richPresence.setDetails("???");
                 }
 
+                if (DiamondFireRPC.CONFIG.ALLOW_PLOT_CONTROL() && PlotRPC.active) {
+                    richPresence.setDetails(PlotRPC.details);
+
+                    if (!Objects.equals(PlotRPC.largeImage, "plot")) {
+                        richPresence.setLargeImage(PlotRPC.largeImage, PlotRPC.largeImageText);
+                    } else if (!Objects.equals(PlotRPC.largeImageText, "")) {
+                        richPresence.setLargeImage("plot", PlotRPC.largeImageText);
+                    }
+
+                    if (!Objects.equals(PlotRPC.state, "")) {
+                        richPresence.setState(PlotRPC.state);
+                    } else {
+                        richPresence.setState("");
+                    }
+                }
+
                 if (DiamondFireRPC.CONFIG.SHOW_MODE() != ConfigModel.ModeHiding.SEMI_HIDE || DiamondFireRPC.CONFIG.SHOW_MODE() != ConfigModel.ModeHiding.FULL_HIDE)
                     richPresence.setSmallImage(Flint.getUser().getMode().getName().toLowerCase(), Flint.getUser().getMode().getName());
                 else
@@ -71,6 +88,7 @@ public class DiscordRPC implements TickedFeature {
      */
     public static void informOfDisconnect() {
         DiscordIPC.stop();
+
     }
 
 }

@@ -17,6 +17,7 @@ public class ConfigModel {
 
     @SectionHeader("Rich Presence")
     public String IN_SPAWN_MESSAGE = "Vibing in %s spawn";
+    public boolean ALLOW_PLOT_CONTROL = true;
 
     public ModeHiding SHOW_MODE = ModeHiding.SHOW;
 

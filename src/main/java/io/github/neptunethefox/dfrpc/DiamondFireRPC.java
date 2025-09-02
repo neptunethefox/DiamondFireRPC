@@ -1,8 +1,10 @@
 package io.github.neptunethefox.dfrpc;
 
+import dev.dfonline.flint.Flint;
 import dev.dfonline.flint.FlintAPI;
 import io.github.neptunethefox.dfrpc.config.DFRPCConfig;
 import io.github.neptunethefox.dfrpc.discord.DiscordRPC;
+import io.github.neptunethefox.dfrpc.plot.PlotRPC;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 
@@ -15,7 +17,9 @@ public class DiamondFireRPC implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        FlintAPI.registerFeatures(new DiscordRPC(CLIENT_ID));
+        FlintAPI.confirmLocationWithLocate();
+        FlintAPI.setDebugging(false);
+        FlintAPI.registerFeatures(new PlotRPC(), new DiscordRPC(CLIENT_ID));
 
         ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> {
             if (Objects.requireNonNull(handler.getServerInfo()).address.contains("diamondfire")) {
