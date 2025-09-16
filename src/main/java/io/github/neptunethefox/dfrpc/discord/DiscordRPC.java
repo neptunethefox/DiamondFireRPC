@@ -70,7 +70,7 @@ public class DiscordRPC implements TickedFeature {
                     if (!Objects.equals(PlotRPC.state, "")) {
                         richPresence.setState(PlotRPC.state);
                     } else {
-                        richPresence.setState("");
+                        richPresence.setState(null);
                     }
                 }
 

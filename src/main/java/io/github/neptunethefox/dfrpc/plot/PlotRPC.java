@@ -1,7 +1,7 @@
 package io.github.neptunethefox.dfrpc.plot;
 
 import dev.dfonline.flint.Flint;
-import dev.dfonline.flint.feature.impl.PacketLoggerFeature;
+import dev.dfonline.flint.feature.trait.PacketListeningFeature;
 import dev.dfonline.flint.util.Logger;
 import dev.dfonline.flint.util.result.EventResult;
 import io.github.neptunethefox.dfrpc.DiamondFireRPC;
@@ -14,7 +14,7 @@ import net.minecraft.text.TextColor;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class PlotRPC extends PacketLoggerFeature {
+public class PlotRPC implements PacketListeningFeature {
 
     public static boolean active = false;
     public static String details = "";
@@ -23,6 +23,7 @@ public class PlotRPC extends PacketLoggerFeature {
     public static String largeImage = "plot";
     public static String largeImageText = "";
 
+    @SuppressWarnings("unused")
     private static final Logger LOGGER = Logger.of(PlotRPC.class);
 
     public void reset() {
