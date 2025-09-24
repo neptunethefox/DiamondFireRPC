@@ -20,6 +20,7 @@
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
+    "flint": ">=1.0.0",
     "minecraft": "${minecraft_version}",
     "modmenu": ">=${modmenu_version}",
     "owo": "${owo_version}"

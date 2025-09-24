@@ -54,9 +54,11 @@ dependencies {
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
+    modApi("maven.modrinth:flint:${project.flint_version}")
     modImplementation include("net.kyori:adventure-platform-fabric:${project.adventure_fabric_version}") {
         exclude group: "net.fabricmc.fabric-api"
     }
+
 
 
     include(implementation 'meteordevelopment:discord-ipc:1.1')
@@ -70,6 +72,7 @@ processResources {
     inputs.property "version", project.version
     inputs.property "minecraft_version", project.minecraft_version
     inputs.property "loader_version", project.loader_version
+    inputs.property "flint_version", project.flint_version
     inputs.property "owo_version", project.owo_version
     inputs.property "modmenu_version", project.modmenu_version
 
@@ -79,6 +82,7 @@ processResources {
         expand "version": project.version,
                 "minecraft_version": project.minecraft_version,
                 "loader_version": project.loader_version,
+                "flint_version": project.flint_version,
                 "owo_version": project.owo_version,
                 "modmenu_version": project.modmenu_version
     }
