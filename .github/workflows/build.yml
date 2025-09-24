@@ -62,6 +62,6 @@ jobs:
           loaders: |-
             fabric
           game-versions: |-
-            1.21.3
+            1.21.8
           files: '["./build/libs/DFRPC-${{ github.run_number }}.jar", "./build/libs/DFRPC-${{ github.run_number }}-sources.jar"]'
           primary-file: "DFRPC-${{ github.run_number }}.jar"
