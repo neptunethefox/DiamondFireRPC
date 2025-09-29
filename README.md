@@ -1,7 +1,6 @@
 <p align="center">
 <img width="512" src="https://github.com/neptunethefox/DiamondFireRPC/blob/master/.github/dfrpc-wide-logo.png?raw=true" alt="The DiamondFire logo with the words RPC in a white font"/>
 </p>
-<h1 align="center"> DiamondFire RPC </h1>
 <p align="center">A mod that adds Discord RPC to DiamondFire!</p>
 
 ---
