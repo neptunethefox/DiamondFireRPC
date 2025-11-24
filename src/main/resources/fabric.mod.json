@@ -23,6 +23,6 @@
     "flint": ">=1.0.0",
     "minecraft": "${minecraft_version}",
     "modmenu": ">=${modmenu_version}",
-    "owo": "${owo_version}"
+    "owo": ">=${owo_version}"
   }
 }

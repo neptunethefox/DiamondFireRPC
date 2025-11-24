@@ -104,6 +104,41 @@ public class PlotRPC implements PacketListeningFeature {
                 return EventResult.CANCEL;
             }
 
+            if (command.getContent().equals(new PlainTextContent.Literal("largeImage"))) {
+                boolean first = true;
+                var textBuilder = new ArrayList<String>();
+
+                for (var part : siblings) {
+                    if (first) {
+                        first = false;
+                        continue;
+                    }
+
+                    textBuilder.add(part.getString());
+                }
+                LOGGER.info(largeImage);
+                largeImage = String.join("", textBuilder);
+                LOGGER.info("new: "+largeImage);
+                return EventResult.CANCEL;
+            }
+
+            if (command.getContent().equals(new PlainTextContent.Literal("largeImageText"))) {
+                boolean first = true;
+                var textBuilder = new ArrayList<String>();
+
+                for (var part : siblings) {
+                    if (first) {
+                        first = false;
+                        continue;
+                    }
+
+                    textBuilder.add(part.getString());
+                }
+
+                largeImageText = String.join(" ", textBuilder);
+                return EventResult.CANCEL;
+            }
+
             return EventResult.PASS;
         }
 
