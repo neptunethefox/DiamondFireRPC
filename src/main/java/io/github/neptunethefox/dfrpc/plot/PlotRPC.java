@@ -84,7 +84,7 @@ public class PlotRPC implements PacketListeningFeature {
 
                     textBuilder.add(part.getString());
                 }
-                details = String.join(" ", textBuilder);
+                details = String.join(" ", textBuilder).strip();
                 return EventResult.CANCEL;
             }
 
@@ -100,7 +100,7 @@ public class PlotRPC implements PacketListeningFeature {
 
                     textBuilder.add(part.getString());
                 }
-                state = String.join(" ", textBuilder);
+                state = String.join(" ", textBuilder).strip();
                 return EventResult.CANCEL;
             }
 
@@ -116,9 +116,8 @@ public class PlotRPC implements PacketListeningFeature {
 
                     textBuilder.add(part.getString());
                 }
-                LOGGER.info(largeImage);
-                largeImage = String.join("", textBuilder);
-                LOGGER.info("new: "+largeImage);
+
+                largeImage = String.join("", textBuilder).strip();
                 return EventResult.CANCEL;
             }
 
@@ -135,7 +134,7 @@ public class PlotRPC implements PacketListeningFeature {
                     textBuilder.add(part.getString());
                 }
 
-                largeImageText = String.join(" ", textBuilder);
+                largeImageText = String.join(" ", textBuilder).strip();
                 return EventResult.CANCEL;
             }
 

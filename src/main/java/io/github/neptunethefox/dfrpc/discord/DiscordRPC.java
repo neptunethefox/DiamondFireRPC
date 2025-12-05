@@ -30,7 +30,7 @@ public class DiscordRPC implements TickedFeature {
     @Override
     public void tick() {
         updateTick++;
-        if (updateTick == 24) {
+        if (updateTick >= 64) {
             updateTick = 0;
 
             if (Flint.getUser().getNode() == null || !DiamondFireRPC.CONFIG.ENABLED()) {
@@ -81,7 +81,6 @@ public class DiscordRPC implements TickedFeature {
                 else
                     richPresence.setSmallImage(null, null);
             }
-
 
             DiscordIPC.setActivity(richPresence);
         }
