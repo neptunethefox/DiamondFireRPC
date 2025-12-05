@@ -76,11 +76,10 @@ public class DiscordRPC implements TickedFeature {
                     richPresence.setState(null);
                 }
 
+                // the worst line of java ever made.
                 boolean isModeHidden = DiamondFireRPC.CONFIG.SHOW_MODE() == ConfigModel.ModeHiding.SEMI_HIDE || DiamondFireRPC.CONFIG.SHOW_MODE() == ConfigModel.ModeHiding.FULL_HIDE;
-
-                richPresence.setSmallImage(null, null);
                 if (!isModeHidden || !Objects.equals(PlotRPC.smallImage, "")) {
-                    if (!Objects.equals(PlotRPC.smallImage, "")) {
+                    if (!Objects.equals(PlotRPC.smallImage, "") && DiamondFireRPC.CONFIG.ALLOW_PLOT_CONTROL() && PlotRPC.active) {
                         richPresence.setSmallImage(PlotRPC.smallImage, PlotRPC.smallImageText);
                     } else {
                         richPresence.setSmallImage(Flint.getUser().getMode().getName().toLowerCase(), Flint.getUser().getMode().getName());
