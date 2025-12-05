@@ -76,10 +76,16 @@ public class DiscordRPC implements TickedFeature {
                     richPresence.setState(null);
                 }
 
-                if (DiamondFireRPC.CONFIG.SHOW_MODE() != ConfigModel.ModeHiding.SEMI_HIDE || DiamondFireRPC.CONFIG.SHOW_MODE() != ConfigModel.ModeHiding.FULL_HIDE)
-                    richPresence.setSmallImage(Flint.getUser().getMode().getName().toLowerCase(), Flint.getUser().getMode().getName());
-                else
-                    richPresence.setSmallImage(null, null);
+                boolean isModeHidden = DiamondFireRPC.CONFIG.SHOW_MODE() == ConfigModel.ModeHiding.SEMI_HIDE || DiamondFireRPC.CONFIG.SHOW_MODE() == ConfigModel.ModeHiding.FULL_HIDE;
+
+                richPresence.setSmallImage(null, null);
+                if (!isModeHidden || !Objects.equals(PlotRPC.smallImage, "")) {
+                    if (!Objects.equals(PlotRPC.smallImage, "")) {
+                        richPresence.setSmallImage(PlotRPC.smallImage, PlotRPC.smallImageText);
+                    } else {
+                        richPresence.setSmallImage(Flint.getUser().getMode().getName().toLowerCase(), Flint.getUser().getMode().getName());
+                    }
+                }
             }
 
             DiscordIPC.setActivity(richPresence);

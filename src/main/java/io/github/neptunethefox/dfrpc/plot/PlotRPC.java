@@ -22,6 +22,8 @@ public class PlotRPC implements PacketListeningFeature {
 
     public static String largeImage = "plot";
     public static String largeImageText = "";
+    public static String smallImage = "";
+    public static String smallImageText = "";
 
     @SuppressWarnings("unused")
     private static final Logger LOGGER = Logger.of(PlotRPC.class);
@@ -29,6 +31,8 @@ public class PlotRPC implements PacketListeningFeature {
     public void reset() {
         largeImage = "plot";
         largeImageText = "";
+        smallImage = "";
+        smallImageText = "";
         details = "";
         state = "";
         active = false;
@@ -135,6 +139,40 @@ public class PlotRPC implements PacketListeningFeature {
                 }
 
                 largeImageText = String.join(" ", textBuilder).strip();
+                return EventResult.CANCEL;
+            }
+
+            if (command.getContent().equals(new PlainTextContent.Literal("smallImage"))) {
+                boolean first = true;
+                var textBuilder = new ArrayList<String>();
+
+                for (var part : siblings) {
+                    if (first) {
+                        first = false;
+                        continue;
+                    }
+
+                    textBuilder.add(part.getString());
+                }
+
+                smallImage = String.join("", textBuilder).strip();
+                return EventResult.CANCEL;
+            }
+
+            if (command.getContent().equals(new PlainTextContent.Literal("smallImageText"))) {
+                boolean first = true;
+                var textBuilder = new ArrayList<String>();
+
+                for (var part : siblings) {
+                    if (first) {
+                        first = false;
+                        continue;
+                    }
+
+                    textBuilder.add(part.getString());
+                }
+
+                smallImageText = String.join(" ", textBuilder).strip();
                 return EventResult.CANCEL;
             }
 
