@@ -30,9 +30,9 @@ public class DiscordRPC implements TickedFeature {
     @Override
     public void tick() {
         updateTick++;
-        if (updateTick == 24) {
+        if (updateTick >= 64) {
             updateTick = 0;
-            richPresence.setLargeImage("diamondfire", "DiamondFire");
+
             if (Flint.getUser().getNode() == null || !DiamondFireRPC.CONFIG.ENABLED()) {
                 DiscordIPC.stop();
                 return;
@@ -44,10 +44,10 @@ public class DiscordRPC implements TickedFeature {
 
             if (Flint.getUser().getPlot() == null && Flint.getUser().getMode() == Mode.SPAWN) {
                 richPresence.setDetails(DiamondFireRPC.CONFIG.IN_SPAWN_MESSAGE().formatted(Flint.getUser().getNode().getName()));
+                richPresence.setLargeImage("diamondfire", "DiamondFire");
                 richPresence.setSmallImage(null, null);
             } else {
                 Plot currentPlot = Flint.getUser().getPlot();
-                richPresence.setLargeImage("plot", Flint.getUser().getPlot().getName().getString());
 
                 if (DiamondFireRPC.CONFIG.SHOW_MODE() != ConfigModel.ModeHiding.FULL_HIDE) {
                     if (!Objects.equals(Flint.getUser().getMode().getName(), "Dev"))
@@ -66,19 +66,27 @@ public class DiscordRPC implements TickedFeature {
                     } else if (!Objects.equals(PlotRPC.largeImageText, "")) {
                         richPresence.setLargeImage("plot", PlotRPC.largeImageText);
                     }
-
-                    if (!Objects.equals(PlotRPC.state, "")) {
-                        richPresence.setState(PlotRPC.state);
-                    } else {
-                        richPresence.setState(null);
-                    }
+                } else {
+                    richPresence.setLargeImage("plot", Flint.getUser().getPlot().getName().getString());
                 }
 
-                if (DiamondFireRPC.CONFIG.SHOW_MODE() != ConfigModel.ModeHiding.SEMI_HIDE || DiamondFireRPC.CONFIG.SHOW_MODE() != ConfigModel.ModeHiding.FULL_HIDE)
-                    richPresence.setSmallImage(Flint.getUser().getMode().getName().toLowerCase(), Flint.getUser().getMode().getName());
-                else
-                    richPresence.setSmallImage(null, null);
+                if (!Objects.equals(PlotRPC.state, "") && PlotRPC.active) {
+                    richPresence.setState(PlotRPC.state);
+                } else {
+                    richPresence.setState(null);
+                }
+
+                // the worst line of java ever made.
+                boolean isModeHidden = DiamondFireRPC.CONFIG.SHOW_MODE() == ConfigModel.ModeHiding.SEMI_HIDE || DiamondFireRPC.CONFIG.SHOW_MODE() == ConfigModel.ModeHiding.FULL_HIDE;
+                if (!isModeHidden || !Objects.equals(PlotRPC.smallImage, "")) {
+                    if (!Objects.equals(PlotRPC.smallImage, "") && DiamondFireRPC.CONFIG.ALLOW_PLOT_CONTROL() && PlotRPC.active) {
+                        richPresence.setSmallImage(PlotRPC.smallImage, PlotRPC.smallImageText);
+                    } else {
+                        richPresence.setSmallImage(Flint.getUser().getMode().getName().toLowerCase(), Flint.getUser().getMode().getName());
+                    }
+                }
             }
+
             DiscordIPC.setActivity(richPresence);
         }
     }

@@ -22,6 +22,8 @@ public class PlotRPC implements PacketListeningFeature {
 
     public static String largeImage = "plot";
     public static String largeImageText = "";
+    public static String smallImage = "";
+    public static String smallImageText = "";
 
     @SuppressWarnings("unused")
     private static final Logger LOGGER = Logger.of(PlotRPC.class);
@@ -29,6 +31,8 @@ public class PlotRPC implements PacketListeningFeature {
     public void reset() {
         largeImage = "plot";
         largeImageText = "";
+        smallImage = "";
+        smallImageText = "";
         details = "";
         state = "";
         active = false;
@@ -84,7 +88,7 @@ public class PlotRPC implements PacketListeningFeature {
 
                     textBuilder.add(part.getString());
                 }
-                details = String.join(" ", textBuilder);
+                details = String.join(" ", textBuilder).strip();
                 return EventResult.CANCEL;
             }
 
@@ -100,7 +104,75 @@ public class PlotRPC implements PacketListeningFeature {
 
                     textBuilder.add(part.getString());
                 }
-                state = String.join(" ", textBuilder);
+                state = String.join(" ", textBuilder).strip();
+                return EventResult.CANCEL;
+            }
+
+            if (command.getContent().equals(new PlainTextContent.Literal("largeImage"))) {
+                boolean first = true;
+                var textBuilder = new ArrayList<String>();
+
+                for (var part : siblings) {
+                    if (first) {
+                        first = false;
+                        continue;
+                    }
+
+                    textBuilder.add(part.getString());
+                }
+
+                largeImage = String.join("", textBuilder).strip();
+                return EventResult.CANCEL;
+            }
+
+            if (command.getContent().equals(new PlainTextContent.Literal("largeImageText"))) {
+                boolean first = true;
+                var textBuilder = new ArrayList<String>();
+
+                for (var part : siblings) {
+                    if (first) {
+                        first = false;
+                        continue;
+                    }
+
+                    textBuilder.add(part.getString());
+                }
+
+                largeImageText = String.join(" ", textBuilder).strip();
+                return EventResult.CANCEL;
+            }
+
+            if (command.getContent().equals(new PlainTextContent.Literal("smallImage"))) {
+                boolean first = true;
+                var textBuilder = new ArrayList<String>();
+
+                for (var part : siblings) {
+                    if (first) {
+                        first = false;
+                        continue;
+                    }
+
+                    textBuilder.add(part.getString());
+                }
+
+                smallImage = String.join("", textBuilder).strip();
+                return EventResult.CANCEL;
+            }
+
+            if (command.getContent().equals(new PlainTextContent.Literal("smallImageText"))) {
+                boolean first = true;
+                var textBuilder = new ArrayList<String>();
+
+                for (var part : siblings) {
+                    if (first) {
+                        first = false;
+                        continue;
+                    }
+
+                    textBuilder.add(part.getString());
+                }
+
+                smallImageText = String.join(" ", textBuilder).strip();
                 return EventResult.CANCEL;
             }
 
