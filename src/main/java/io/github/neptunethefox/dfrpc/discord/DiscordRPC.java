@@ -57,7 +57,6 @@ public class DiscordRPC implements TickedFeature {
                 } else {
                     richPresence.setDetails("???");
                 }
-
                 if (DiamondFireRPC.CONFIG.ALLOW_PLOT_CONTROL() && PlotRPC.active) {
                     richPresence.setDetails(PlotRPC.details);
 
